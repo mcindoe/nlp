@@ -52,3 +52,5 @@ for file_name in json_files:
 
 with open('data_dump.txt', 'w+') as fp:
 	fp.writelines(text)
+
+# some comment
