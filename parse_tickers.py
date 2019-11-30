@@ -2,11 +2,11 @@ import csv
 import json
 import pandas as pd
 
+# Read in data table
 with open('data/SP_500.csv') as fp:
 	data = pd.read_csv(fp)
 
-db = {}
-
+# List of common company words to ignore, following along with the paper's methodology
 words_to_ignore = [
 	'inc',
 	'group',
@@ -16,8 +16,11 @@ words_to_ignore = [
 	'ltd'
 ]
 
+# Characters to ignore in the company names
 characters_to_ignore = [',', '.']
 
+# Create Database
+db = {}
 for index, row in data.iterrows():
 	# Ignore the last two rows which contain information about the table
 	if index < len(data) - 2:
@@ -31,9 +34,11 @@ for index, row in data.iterrows():
 
 		db[name.upper()] = row['Ticker']
 
+# Write Database to JSON format
 with open('data/SP500_Tickers.json', 'w+') as fp:
 	json.dump(db, fp, indent = 2)
 
+# Write Database to CSV format
 with open('data/SP500_Tickers.csv', 'w+') as fp:
 	writer = csv.writer(fp)
 	headers = ['Name', 'Ticker']
