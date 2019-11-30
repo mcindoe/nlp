@@ -4,3 +4,4 @@ __pycache__
 *.pyc
 WordVectorData
 data_dump.txt
+data/guru99.txt
