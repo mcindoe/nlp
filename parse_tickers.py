@@ -1,3 +1,4 @@
+import csv
 import json
 import pandas as pd
 
@@ -30,5 +31,13 @@ for index, row in data.iterrows():
 
 		db[name.upper()] = row['Ticker']
 
-with open('data/tickers.json', 'w+') as fp:
+with open('data/SP500_Tickers.json', 'w+') as fp:
 	json.dump(db, fp, indent = 2)
+
+with open('data/SP500_Tickers.csv', 'w+') as fp:
+	writer = csv.writer(fp)
+	headers = ['Name', 'Ticker']
+
+	writer.writerow(headers)
+	for key, val in db.items():
+		writer.writerow([key, val])
