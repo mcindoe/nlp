@@ -13,7 +13,8 @@ words_to_ignore = [
 	'corp',
 	'co',
 	'plc',
-	'ltd'
+	'ltd',
+    'the'
 ]
 
 # Characters to ignore in the company names
