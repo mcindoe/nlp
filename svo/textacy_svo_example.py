@@ -2,7 +2,7 @@ import spacy
 import textacy
 
 # Load "en_core_web_sm" NLP. To download, first pip install spacy, then 
-# enter in a terminal "python -m spacy download en_core_web_sm"
+# enter in a terminal "python3 -m spacy download en_core_web_sm"
 nlp = spacy.load('en_core_web_sm')
 
 example_str = "Corning announces investment in Versalume LLC"
