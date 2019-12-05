@@ -1,6 +1,7 @@
 '''
 Gets the header of every article in the data/word_vectors/raw folders
 '''
+import csv
 import json
 import os
 import unicodedata
@@ -26,13 +27,21 @@ for file in json_files:
 	with open(file, 'r') as f:
 		data = json.load(f)
 		header = data['title']
-		headers.append(header)
+		date = data['published'][:9]
+		headers.append({
+			'header': header,
+			'date': date
+		})
 
 # Create a dictionary to write to file
 output = {'headers': headers}
 
 # Write the list to file
-with open('data/word_vectors/article_headers.json', 'w+') as file:
+with open('data/word_vectors/article_headers_with_dates.json', 'w+') as file:
 	# Disabling ensure_ascii - allows e.g. quote marks and $ signs to appear
 	# I think this is the approach we want
-	json.dump(output, file, indent = 2, ensure_ascii = False)
+	writer = csv.writer(file)
+	writer.writerow(['Date', 'Header'])
+	for el in output['headers']:
+		print(el)
+		writer.writerow([el['date'], el['header']])
