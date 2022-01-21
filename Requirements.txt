@@ -16,7 +16,7 @@ jedi==0.15.1
 jmespath==0.9.4
 jupyter-client==5.3.4
 jupyter-core==4.6.1
-nltk==3.4.5
+nltk==3.6.6
 numpy==1.17.4
 pandas==0.25.3
 parso==0.5.1
